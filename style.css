@@ -42,19 +42,22 @@ body {
     width: 100%;
     height: auto;
     border-radius: 10px;
-}
-
-button {
-    background-color: #ff4d6d;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin: 10px;
-    border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: transform 0.3s;
 }
 
-button:hover {
-    background-color: #e63950;
+.grid-gallery img:hover {
+    transform: scale(1.1);
 }
+
+.hidden-text {
+    display: none;
+    color: #e63950;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.image-container {
+    text-align: center;
+}
+

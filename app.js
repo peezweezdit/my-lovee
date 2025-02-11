@@ -1,8 +1,20 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
+    const images = document.querySelectorAll(".grid-gallery img");
+    
+    images.forEach(img => {
+        img.addEventListener("click", function () {
+            let text = this.nextElementSibling;
+            if (text && text.classList.contains("hidden-text")) {
+                text.style.display = text.style.display === "none" ? "block" : "none";
+            }
+        });
+    });
+
+    // Background music control
     const music = document.getElementById("bg-music");
     const musicBtn = document.getElementById("music-btn");
-    
-    musicBtn.addEventListener("click", function() {
+
+    musicBtn.addEventListener("click", function () {
         if (music.paused) {
             music.play();
             musicBtn.textContent = "Pause Music";
@@ -11,18 +23,4 @@ document.addEventListener("DOMContentLoaded", function() {
             musicBtn.textContent = "Play Music";
         }
     });
-
-    // Page transition effect
-    document.querySelectorAll("nav a").forEach(link => {
-        link.addEventListener("click", function(event) {
-            event.preventDefault();
-            const targetPage = this.getAttribute("href");
-            document.body.style.opacity = 0;
-            setTimeout(() => {
-                window.location.href = targetPage;
-            }, 500);
-        });
-    });
-    
-    document.body.style.opacity = 1;
 });
