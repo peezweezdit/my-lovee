@@ -3,14 +3,17 @@ document.addEventListener("DOMContentLoaded", function () {
     
     images.forEach(img => {
         img.addEventListener("click", function () {
-            let text = this.nextElementSibling;
+            let parent = this.parentNode;
+            let text = parent.querySelector(".hidden-text");
+            
             if (!text) {
                 text = document.createElement("span");
                 text.classList.add("hidden-text");
                 text.textContent = "Ini adalah teks untuk gambar ini";
-                this.parentNode.appendChild(text);
+                parent.appendChild(text);
             }
-            text.style.display = text.style.display === "none" ? "block" : "none";
+            
+            text.style.display = (text.style.display === "none" || text.style.display === "") ? "block" : "none";
         });
     });
 
