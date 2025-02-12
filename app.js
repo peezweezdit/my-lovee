@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const images = document.querySelectorAll(".grid-gallery img");
-    
+    const images = document.querySelectorAll(".grid-gallery .image-container img");
+
     images.forEach(img => {
         img.addEventListener("click", function () {
             let parent = this.parentNode;
             let text = parent.querySelector(".hidden-text");
-            
+
             if (!text) {
                 text = document.createElement("span");
                 text.classList.add("hidden-text");
