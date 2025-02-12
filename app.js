@@ -4,9 +4,13 @@ document.addEventListener("DOMContentLoaded", function () {
     images.forEach(img => {
         img.addEventListener("click", function () {
             let text = this.nextElementSibling;
-            if (text && text.classList.contains("hidden-text")) {
-                text.style.display = text.style.display === "none" ? "block" : "none";
+            if (!text) {
+                text = document.createElement("span");
+                text.classList.add("hidden-text");
+                text.textContent = "Ini adalah teks untuk gambar ini";
+                this.parentNode.appendChild(text);
             }
+            text.style.display = text.style.display === "none" ? "block" : "none";
         });
     });
 
