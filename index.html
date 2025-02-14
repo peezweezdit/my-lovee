@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <button id="music-btn"><span id="music-icon">▶</span></button>
     
-    <h1>Happy Valentine's Day Kesayangankuu</h1>
+    <h1>Welcome to Our Memories</h1>
     <div class="grid-gallery">
         <div class="image-container">
             <img src="img1.jpg" alt="Photo 1">
@@ -29,6 +30,32 @@
     </div>
 
     <script src="app.js"></script>
-    <button class="cute-button" onclick="window.location.href='page1.html'">💖</button>
+    
+    <button class="cute-button heart-button" onclick="window.location.href='page1.html'">💖</button>
+    
+    <style>
+        .heart-button {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: pink;
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            animation: heartbeat 1s infinite alternate;
+        }
+
+        @keyframes heartbeat {
+            0% {
+                transform: translateX(-50%) scale(1);
+            }
+            100% {
+                transform: translateX(-50%) scale(1.2);
+            }
+        }
+    </style>
 </body>
 </html>
