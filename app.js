@@ -40,18 +40,25 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Menampilkan hidden text saat gambar diklik
+    // Menampilkan hidden text secara otomatis dengan animasi
+    const hiddenTexts = document.querySelectorAll(".hidden-text");
+    hiddenTexts.forEach((text, index) => {
+        setTimeout(() => {
+            text.style.display = "flex";
+            text.style.justifyContent = "center";
+            text.style.alignItems = "center";
+            text.style.opacity = "0";
+            text.style.transition = "opacity 0.8s ease-in-out";
+            setTimeout(() => {
+                text.style.opacity = "1";
+            }, 50);
+        }, index * 1000); // Muncul satu per satu setiap 1 detik
+    });
+
+    // Tampilkan gambar full-screen
     const images = document.querySelectorAll(".image-container img");
     images.forEach(img => {
         img.addEventListener("click", function () {
-            let text = this.parentElement.querySelector(".hidden-text");
-            if (text) {
-                text.style.display = text.style.display === "none" ? "flex" : "none";
-                text.style.justifyContent = "center";
-                text.style.alignItems = "center";
-            }
-
-            // Tampilkan gambar full-screen
             let lightbox = document.createElement("div");
             lightbox.id = "lightbox";
             lightbox.style.position = "fixed";
@@ -66,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
             lightbox.style.zIndex = "1000";
             
             let imgFull = document.createElement("img");
-            imgFull.src = this.getAttribute("src"); // Memastikan src diambil dengan benar
+            imgFull.src = this.getAttribute("src");
             imgFull.style.maxWidth = "90%";
             imgFull.style.maxHeight = "90%";
             imgFull.style.borderRadius = "10px";
