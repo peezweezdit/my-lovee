@@ -1,7 +1,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     text-align: center;
-    background-color: #aa336a;
+    background-color: #8b2f50;
     color: #ffffff;
     overflow-x: hidden;
     overflow-y: auto;
@@ -51,7 +51,7 @@ h1 {
 .grid-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
+    gap: 10px;
     padding: 20px;
     max-width: 800px;
     margin: auto;
@@ -62,6 +62,7 @@ h1 {
     padding: 10px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.2);
 }
 
 .image-container:nth-child(4n) {
@@ -77,7 +78,7 @@ h1 {
 }
 
 .grid-gallery img:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .hidden-text {
@@ -85,4 +86,28 @@ h1 {
     color: #ffe4e1;
     font-weight: bold;
     margin-top: 5px;
+}
+
+/* Tombol Musik */
+#music-btn {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ff66b2;
+    border: none;
+    padding: 12px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(255, 20, 147, 0.5);
+    transition: background 0.3s, transform 0.2s;
+}
+
+#music-btn:hover {
+    background: #ff3399;
+    transform: translateX(-50%) scale(1.1);
 }
