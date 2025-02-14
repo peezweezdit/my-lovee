@@ -7,10 +7,43 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="music-container">
-        <button id="music-btn"><span id="music-icon">▶</span></button>
-    </div>
+    <button id="music-btn"><span id="music-icon">▶</span></button>
+    <audio id="bg-music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
     
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let music = document.getElementById("bg-music");
+            let musicBtn = document.getElementById("music-btn");
+            let musicIcon = document.getElementById("music-icon");
+            
+            if (!window.globalMusic) {
+                window.globalMusic = new Audio("music.mp3");
+                window.globalMusic.loop = true;
+            }
+            
+            let isPlaying = sessionStorage.getItem("isPlaying") === "true";
+            
+            if (isPlaying) {
+                window.globalMusic.play();
+                musicIcon.innerHTML = "⏸";
+            }
+
+            musicBtn.addEventListener("click", function () {
+                if (window.globalMusic.paused) {
+                    window.globalMusic.play();
+                    musicIcon.innerHTML = "⏸";
+                    sessionStorage.setItem("isPlaying", "true");
+                } else {
+                    window.globalMusic.pause();
+                    musicIcon.innerHTML = "▶";
+                    sessionStorage.setItem("isPlaying", "false");
+                }
+            });
+        });
+</script>
+
     <h1>Welcome to Page 3</h1>
     <div class="grid-gallery">
         <img src="img15.jpg" alt="Photo 15">
