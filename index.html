@@ -8,26 +8,22 @@
 </head>
 <body>
     <button id="music-btn"><span id="music-icon">▶</span></button>
-    <audio id="bg-music" loop>
-        <source src="music.mp3" type="audio/mpeg">
-    </audio>
     
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            let music = document.getElementById("bg-music");
-            let musicBtn = document.getElementById("music-btn");
-            let musicIcon = document.getElementById("music-icon");
-            
             if (!window.globalMusic) {
                 window.globalMusic = new Audio("music.mp3");
                 window.globalMusic.loop = true;
             }
             
-            let isPlaying = sessionStorage.getItem("isPlaying") === "true";
+            let musicBtn = document.getElementById("music-btn");
+            let musicIcon = document.createElement("span");
+            musicIcon.id = "music-icon";
+            musicIcon.innerHTML = sessionStorage.getItem("isPlaying") === "true" ? "⏸" : "▶";
+            musicBtn.appendChild(musicIcon);
             
-            if (isPlaying) {
+            if (sessionStorage.getItem("isPlaying") === "true") {
                 window.globalMusic.play();
-                musicIcon.innerHTML = "⏸";
             }
 
             musicBtn.addEventListener("click", function () {
