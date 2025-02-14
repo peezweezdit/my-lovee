@@ -14,18 +14,18 @@ document.addEventListener("DOMContentLoaded", function () {
     
     if (isPlaying && window.globalMusic.paused) {
         window.globalMusic.play().catch(error => console.log("Playback error: ", error));
-        musicIcon.innerHTML = "⏸";
+        musicIcon.innerHTML = "⏸ ılılılllıılılıllllıılılllıllı";
         window.globalMusic.isPlaying = true;
     }
 
     musicBtn.addEventListener("click", function () {
         if (window.globalMusic.paused) {
             window.globalMusic.play().catch(error => console.log("Playback error: ", error));
-            musicIcon.innerHTML = "⏸";
+            musicIcon.innerHTML = "⏸ ılılılllıılılıllllıılılllıllı";
             sessionStorage.setItem("isPlaying", "true");
         } else {
             window.globalMusic.pause();
-            musicIcon.innerHTML = "▶";
+            musicIcon.innerHTML = "▶ ılılılllıılılıllllıılılllıllı";
             sessionStorage.setItem("isPlaying", "false");
         }
     });
