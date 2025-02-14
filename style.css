@@ -29,12 +29,12 @@ body {
 
 /* Tombol ke halaman selanjutnya */
 .next-button {
-    left: 70%;
+    left: 50%;
 }
 
 /* Tombol ke halaman sebelumnya */
 .prev-button {
-    left: 30%;
+    left: 50%;
 }
 
 /* Efek animasi */
@@ -46,8 +46,6 @@ body {
         transform: scale(1.2);
     }
 }
-
-h1 {
     h1 {
         background: #d43f6a;
         font-size: 50px; /* Ukuran teks diperbesar */
@@ -60,7 +58,6 @@ h1 {
         box-shadow: 2px 2px 8px rgba(255, 20, 147, 0.5);
         margin-top: 40px; /* Mengurangi jarak dari atas agar lebih proporsional */
     }
-}
 
 .grid-gallery {
     display: grid;
