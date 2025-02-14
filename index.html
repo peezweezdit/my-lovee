@@ -8,22 +8,26 @@
 </head>
 <body>
     <button id="music-btn"><span id="music-icon">▶</span></button>
+    <audio id="bg-music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
     
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            let music = document.getElementById("bg-music");
+            let musicBtn = document.getElementById("music-btn");
+            let musicIcon = document.getElementById("music-icon");
+            
             if (!window.globalMusic) {
                 window.globalMusic = new Audio("music.mp3");
                 window.globalMusic.loop = true;
             }
             
-            let musicBtn = document.getElementById("music-btn");
-            let musicIcon = document.createElement("span");
-            musicIcon.id = "music-icon";
-            musicIcon.innerHTML = sessionStorage.getItem("isPlaying") === "true" ? "⏸" : "▶";
-            musicBtn.appendChild(musicIcon);
+            let isPlaying = sessionStorage.getItem("isPlaying") === "true";
             
-            if (sessionStorage.getItem("isPlaying") === "true") {
+            if (isPlaying) {
                 window.globalMusic.play();
+                musicIcon.innerHTML = "⏸";
             }
 
             musicBtn.addEventListener("click", function () {
@@ -50,19 +54,19 @@
     <div class="grid-gallery">
         <div class="image-container">
             <img src="img1.jpg" alt="Photo 1">
-            <span class="hidden-text">Ini adalah teks untuk gambar 1</span>
+            <span class="hidden-text">Ini kita pertama kali videocall</span>
         </div>
         <div class="image-container">
             <img src="img2.jpg" alt="Photo 2">
-            <span class="hidden-text">Ini adalah teks untuk gambar 2</span>
+            <span class="hidden-text">Ini kita pertama kali nonton bareng</span>
         </div>
         <div class="image-container">
             <img src="img3.jpg" alt="Photo 3">
-            <span class="hidden-text">Ini adalah teks untuk gambar 3</span>
+            <span class="hidden-text">Ini foto pertama kali bbyyna kirim ke akuu</span>
         </div>
         <div class="image-container">
             <img src="img4.jpg" alt="Photo 4">
-            <span class="hidden-text">Ini adalah teks untuk gambar 4</span>
+            <span class="hidden-text">Ini pertama kali kita ketemu bbyynaaa</span>
         </div>
     </div>
     
