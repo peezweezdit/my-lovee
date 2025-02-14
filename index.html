@@ -14,23 +14,29 @@
     
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            const music = document.getElementById("bg-music");
-            const musicBtn = document.getElementById("music-btn");
-            const musicIcon = document.getElementById("music-icon");
+            let music = document.getElementById("bg-music");
+            let musicBtn = document.getElementById("music-btn");
+            let musicIcon = document.getElementById("music-icon");
+            
+            if (!window.globalMusic) {
+                window.globalMusic = new Audio("music.mp3");
+                window.globalMusic.loop = true;
+            }
+            
             let isPlaying = sessionStorage.getItem("isPlaying") === "true";
-
+            
             if (isPlaying) {
-                music.play();
+                window.globalMusic.play();
                 musicIcon.innerHTML = "⏸";
             }
 
             musicBtn.addEventListener("click", function () {
-                if (music.paused) {
-                    music.play();
+                if (window.globalMusic.paused) {
+                    window.globalMusic.play();
                     musicIcon.innerHTML = "⏸";
                     sessionStorage.setItem("isPlaying", "true");
                 } else {
-                    music.pause();
+                    window.globalMusic.pause();
                     musicIcon.innerHTML = "▶";
                     sessionStorage.setItem("isPlaying", "false");
                 }
