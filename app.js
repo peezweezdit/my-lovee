@@ -21,12 +21,13 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!window.globalMusic) {
         window.globalMusic = new Audio("music.mp3");
         window.globalMusic.loop = true;
+        window.globalMusic.volume = 1.0;
     }
 
     const musicBtn = document.getElementById("music-btn");
     const musicIcon = document.getElementById("music-icon");
     
-    if (sessionStorage.getItem("isPlaying") === "true") {
+    if (sessionStorage.getItem("isPlaying") === "true" && window.globalMusic.paused) {
         window.globalMusic.play();
         musicIcon.innerHTML = "⏸";
     }

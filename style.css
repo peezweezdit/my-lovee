@@ -1,9 +1,10 @@
 body {
     font-family: 'Poppins', sans-serif;
     text-align: center;
-    background-color: #aa336a; /* Warna lebih solid dan tidak terlalu terang */
+    background-color: #aa336a;
     color: #ffffff;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     position: relative;
 }
 
@@ -63,7 +64,6 @@ h1 {
     border-radius: 10px;
 }
 
-/* Menambahkan jarak setiap 4 foto */
 .image-container:nth-child(4n) {
     margin-bottom: 30px;
 }
@@ -85,26 +85,4 @@ h1 {
     color: #ffe4e1;
     font-weight: bold;
     margin-top: 5px;
-}
-
-/* Efek animasi love dan bunga */
-@keyframes floating {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0); }
-}
-
-.love, .flower {
-    position: absolute;
-    font-size: 30px;
-    opacity: 0.7;
-    animation: floating 3s infinite ease-in-out;
-}
-
-.love {
-    color: pink;
-}
-
-.flower {
-    color: lightyellow;
 }
