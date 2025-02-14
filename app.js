@@ -20,14 +20,21 @@ document.addEventListener("DOMContentLoaded", function () {
     // Background music control
     const music = document.getElementById("bg-music");
     const musicBtn = document.getElementById("music-btn");
-
+    const musicIcon = document.getElementById("music-icon");
+    
+    let isPlaying = false;
+    
     musicBtn.addEventListener("click", function () {
-        if (music.paused) {
-            music.play();
-            musicBtn.textContent = "Pause Music";
-        } else {
+        if (isPlaying) {
             music.pause();
-            musicBtn.textContent = "Play Music";
+            musicIcon.classList.remove("playing");
+            musicIcon.innerHTML = "▶";
+        } else {
+            music.play();
+            musicIcon.classList.add("playing");
+            musicIcon.innerHTML = "⏸";
         }
+        isPlaying = !isPlaying;
     });
 });
+
