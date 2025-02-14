@@ -40,13 +40,18 @@ body {
 }
 
 h1 {
-    background: #d43f6a;
-    color: white;
-    padding: 15px;
-    border-radius: 15px;
-    display: inline-block;
-    box-shadow: 2px 2px 8px rgba(255, 20, 147, 0.5);
-    margin-top: 80px;
+    h1 {
+        background: #d43f6a;
+        font-size: 50px; /* Ukuran teks diperbesar */
+        font-weight: bold; /* Membuat teks lebih tebal */
+        text-align: center; /* Memastikan teks tetap di tengah */
+        color: white; /* Warna teks */
+        padding: 20px;
+        border-radius: 15px;
+        display: inline-block;
+        box-shadow: 2px 2px 8px rgba(255, 20, 147, 0.5);
+        margin-top: 40px; /* Mengurangi jarak dari atas agar lebih proporsional */
+    }
 }
 
 .grid-gallery {
