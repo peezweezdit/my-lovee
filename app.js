@@ -61,5 +61,17 @@ document.addEventListener("DOMContentLoaded", function () {
             video.style.opacity = "1";
             video.style.transform = "translateY(0)";
         }, index * 500);
+        document.addEventListener("DOMContentLoaded", function () {
+            
+            // Menampilkan teks otomatis saat halaman dimuat
+            const hiddenTexts = document.querySelectorAll(".hidden-text");
+            hiddenTexts.forEach((text, index) => {
+                text.style.opacity = "0"; // Mulai dengan transparan
+                setTimeout(() => {
+                    text.style.transition = "opacity 1s ease-in-out";
+                    text.style.opacity = "1"; // Muncul dengan efek fade-in
+                }, index * 300);
+            });
+        });        
     });
 });

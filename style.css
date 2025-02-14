@@ -12,32 +12,33 @@ body {
     margin-top: 50px;
 }
 
-.heart-container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #ff99cc;
-    padding: 15px;
-    border-radius: 20px;
-    box-shadow: 3px 3px 10px rgba(255, 20, 147, 0.5);
-    width: 80%;
-    margin: auto;
-}
-
-.animated-heart {
-    font-size: 50px;
+.cute-button {
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ff66b2;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 50%;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(255, 20, 147, 0.5);
+    transition: transform 0.3s ease-in-out;
     animation: heartbeat 1s infinite alternate;
 }
 
+/* Animasi tombol love */
 @keyframes heartbeat {
     0% {
-        transform: scale(1);
+        transform: translateX(-50%) scale(1);
     }
     100% {
-        transform: scale(1.3);
+        transform: translateX(-50%) scale(1.2);
     }
 }
+
 
 h1 {
     h1 {
