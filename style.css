@@ -1,8 +1,10 @@
 body {
-    font-family: 'Times New Roman', 'Times New Roman';
+    font-family: 'Poppins', sans-serif;
     text-align: center;
-    background: linear-gradient(to bottom right, #ffccff, #ff99cc, #ff66b2);
+    background-color: #aa336a; /* Warna lebih solid dan tidak terlalu terang */
     color: #ffffff;
+    overflow: hidden;
+    position: relative;
 }
 
 .container {
@@ -22,13 +24,6 @@ body {
     margin: auto;
 }
 
-.heart-container .text {
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-}
-
 .animated-heart {
     font-size: 50px;
     animation: heartbeat 1s infinite alternate;
@@ -44,7 +39,7 @@ body {
 }
 
 h1 {
-    background: #ff66b2;
+    background: #d43f6a;
     color: white;
     padding: 15px;
     border-radius: 15px;
@@ -55,10 +50,22 @@ h1 {
 .grid-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 10px;
+    gap: 15px;
     padding: 20px;
     max-width: 800px;
     margin: auto;
+}
+
+.image-container {
+    text-align: center;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+/* Menambahkan jarak setiap 4 foto */
+.image-container:nth-child(4n) {
+    margin-bottom: 30px;
 }
 
 .grid-gallery img {
@@ -75,36 +82,29 @@ h1 {
 
 .hidden-text {
     display: none;
-    color: #e63950;
+    color: #ffe4e1;
     font-weight: bold;
     margin-top: 5px;
 }
 
-.image-container {
-    text-align: center;
+/* Efek animasi love dan bunga */
+@keyframes floating {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
 }
 
-/* Gaya untuk tombol lucu */
-button {
-    background-color: #ff66b2;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    margin: 10px;
-    border-radius: 25px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: transform 0.2s, background 0.3s;
-    box-shadow: 2px 2px 10px rgba(255, 105, 180, 0.5);
-    display: inline-block;
+.love, .flower {
+    position: absolute;
+    font-size: 30px;
+    opacity: 0.7;
+    animation: floating 3s infinite ease-in-out;
 }
 
-button:hover {
-    background-color: #ff3399;
-    transform: scale(1.1);
+.love {
+    color: pink;
 }
 
-button:active {
-    transform: scale(0.95);
+.flower {
+    color: lightyellow;
 }
