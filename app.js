@@ -66,10 +66,11 @@ document.addEventListener("DOMContentLoaded", function () {
             lightbox.style.zIndex = "1000";
             
             let imgFull = document.createElement("img");
-            imgFull.src = this.src;
+            imgFull.src = this.getAttribute("src"); // Memastikan src diambil dengan benar
             imgFull.style.maxWidth = "90%";
             imgFull.style.maxHeight = "90%";
             imgFull.style.borderRadius = "10px";
+            imgFull.style.display = "block";
             
             let closeBtn = document.createElement("span");
             closeBtn.innerHTML = "❌";
