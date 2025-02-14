@@ -18,23 +18,28 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Background music control
-    const music = document.getElementById("bg-music");
+    if (!window.globalMusic) {
+        window.globalMusic = new Audio("music.mp3");
+        window.globalMusic.loop = true;
+    }
+
     const musicBtn = document.getElementById("music-btn");
     const musicIcon = document.getElementById("music-icon");
     
-    let isPlaying = false;
-    
+    if (sessionStorage.getItem("isPlaying") === "true") {
+        window.globalMusic.play();
+        musicIcon.innerHTML = "⏸";
+    }
+
     musicBtn.addEventListener("click", function () {
-        if (isPlaying) {
-            music.pause();
-            musicIcon.classList.remove("playing");
-            musicIcon.innerHTML = "▶";
-        } else {
-            music.play();
-            musicIcon.classList.add("playing");
+        if (window.globalMusic.paused) {
+            window.globalMusic.play();
             musicIcon.innerHTML = "⏸";
+            sessionStorage.setItem("isPlaying", "true");
+        } else {
+            window.globalMusic.pause();
+            musicIcon.innerHTML = "▶";
+            sessionStorage.setItem("isPlaying", "false");
         }
-        isPlaying = !isPlaying;
     });
 });
-
