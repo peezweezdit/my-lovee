@@ -43,15 +43,13 @@ document.addEventListener("DOMContentLoaded", function () {
     // Menampilkan hidden text secara otomatis dengan animasi
     const hiddenTexts = document.querySelectorAll(".hidden-text");
     hiddenTexts.forEach((text, index) => {
+        text.style.display = "flex";
+        text.style.justifyContent = "center";
+        text.style.alignItems = "center";
+        text.style.opacity = "0";
+        text.style.transition = "opacity 1s ease-in-out";
         setTimeout(() => {
-            text.style.display = "flex";
-            text.style.justifyContent = "center";
-            text.style.alignItems = "center";
-            text.style.opacity = "0";
-            text.style.transition = "opacity 0.8s ease-in-out";
-            setTimeout(() => {
-                text.style.opacity = "1";
-            }, 50);
+            text.style.opacity = "1";
         }, index * 1000); // Muncul satu per satu setiap 1 detik
     });
 
