@@ -8,30 +8,6 @@
 </head>
 <body>
     <button id="music-btn"><span id="music-icon">▶</span></button>
-    
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let musicBtn = document.getElementById("music-btn");
-            let musicIcon = document.getElementById("music-icon");
-            
-            let music = new Audio("music.mp3");
-            music.loop = true;
-            music.volume = 1.0;
-            
-            let isPlaying = false;
-
-            musicBtn.addEventListener("click", function () {
-                if (isPlaying) {
-                    music.pause();
-                    musicIcon.innerHTML = "▶";
-                } else {
-                    music.play().catch(error => console.log("Playback error: ", error));
-                    musicIcon.innerHTML = "⏸";
-                }
-                isPlaying = !isPlaying;
-            });
-        });
-    </script>
 
     <h1>Happy Valentine's dayy sayanggg</h1>
     <div class="grid-gallery">
