@@ -40,59 +40,26 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Menampilkan hidden text secara otomatis dengan animasi
-    const hiddenTexts = document.querySelectorAll(".hidden-text");
-    hiddenTexts.forEach((text, index) => {
-        text.style.display = "flex";
-        text.style.justifyContent = "center";
-        text.style.alignItems = "center";
-        text.style.opacity = "0";
-        text.style.transition = "opacity 1s ease-in-out";
-        setTimeout(() => {
-            text.style.opacity = "1";
-        }, index * 1000); // Muncul satu per satu setiap 1 detik
+    // Memastikan hanya satu video yang diputar dalam satu waktu
+    const videos = document.querySelectorAll(".grid-gallery video");
+    videos.forEach(video => {
+        video.addEventListener("play", function () {
+            videos.forEach(v => {
+                if (v !== video) {
+                    v.pause();
+                }
+            });
+        });
     });
 
-    // Tampilkan gambar full-screen
-    const images = document.querySelectorAll(".image-container img");
-    images.forEach(img => {
-        img.addEventListener("click", function () {
-            let lightbox = document.createElement("div");
-            lightbox.id = "lightbox";
-            lightbox.style.position = "fixed";
-            lightbox.style.top = "0";
-            lightbox.style.left = "0";
-            lightbox.style.width = "100vw";
-            lightbox.style.height = "100vh";
-            lightbox.style.background = "rgba(0, 0, 0, 0.8)";
-            lightbox.style.display = "flex";
-            lightbox.style.justifyContent = "center";
-            lightbox.style.alignItems = "center";
-            lightbox.style.zIndex = "1000";
-            
-            let imgFull = document.createElement("img");
-            imgFull.src = this.getAttribute("src");
-            imgFull.style.maxWidth = "90%";
-            imgFull.style.maxHeight = "90%";
-            imgFull.style.borderRadius = "10px";
-            imgFull.style.display = "block";
-            
-            let closeBtn = document.createElement("span");
-            closeBtn.innerHTML = "❌";
-            closeBtn.style.position = "absolute";
-            closeBtn.style.top = "20px";
-            closeBtn.style.right = "30px";
-            closeBtn.style.fontSize = "30px";
-            closeBtn.style.color = "white";
-            closeBtn.style.cursor = "pointer";
-
-            closeBtn.addEventListener("click", function () {
-                document.body.removeChild(lightbox);
-            });
-
-            lightbox.appendChild(imgFull);
-            lightbox.appendChild(closeBtn);
-            document.body.appendChild(lightbox);
-        });
+    // Animasi transisi saat video muncul
+    videos.forEach((video, index) => {
+        video.style.opacity = "0";
+        video.style.transform = "translateY(50px)";
+        setTimeout(() => {
+            video.style.transition = "opacity 1s ease-in-out, transform 1s ease-in-out";
+            video.style.opacity = "1";
+            video.style.transform = "translateY(0)";
+        }, index * 500);
     });
 });
