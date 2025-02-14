@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button id="music-btn"><span id="music-icon">▶</span></button>
+    <audio id="bg-music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let music = document.getElementById("bg-music");
+            let musicBtn = document.getElementById("music-btn");
+            let musicIcon = document.getElementById("music-icon");
+            
+            if (!window.globalMusic) {
+                window.globalMusic = new Audio("music.mp3");
+                window.globalMusic.loop = true;
+            }
+            
+            let isPlaying = sessionStorage.getItem("isPlaying") === "true";
+            
+            if (isPlaying) {
+                window.globalMusic.play();
+                musicIcon.innerHTML = "⏸";
+            }
+
+            musicBtn.addEventListener("click", function () {
+                if (window.globalMusic.paused) {
+                    window.globalMusic.play();
+                    musicIcon.innerHTML = "⏸";
+                    sessionStorage.setItem("isPlaying", "true");
+                } else {
+                    window.globalMusic.pause();
+                    musicIcon.innerHTML = "▶";
+                    sessionStorage.setItem("isPlaying", "false");
+                }
+            });
+        });
+    </script>
+    
+    <div class="container">
+        <div class="heart-container" onclick="window.location.href='page1.html'">
+            <span class="heart animated-heart">❤️</span>
+            <span class="text">Tekan LOVE nyaa sayangggkuu</span>
+        </div>
+    </div>
+
+    <div class="grid-gallery">
+        <div class="image-container">
+            <img src="img1.jpg" alt="Photo 1">
+            <span class="hidden-text">Ini kita pertama kali videocall</span>
+        </div>
+        <div class="image-container">
+            <img src="img2.jpg" alt="Photo 2">
+            <span class="hidden-text">Ini kita pertama kali nonton bareng</span>
+        </div>
+        <div class="image-container">
+            <img src="img3.jpg" alt="Photo 3">
+            <span class="hidden-text">Ini foto pertama kali bbyyna kirim ke akuu</span>
+        </div>
+        <div class="image-container">
+            <img src="img4.jpg" alt="Photo 4">
+            <span class="hidden-text">Ini pertama kali kita ketemu bbyynaaa</span>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
