@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
         window.globalMusic.loop = true;
         window.globalMusic.volume = 1.0;
         window.globalMusic.isPlaying = false;
+        document.body.appendChild(window.globalMusic);
     }
 
     const musicBtn = document.getElementById("music-btn");
@@ -11,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     let isPlaying = sessionStorage.getItem("isPlaying") === "true";
     
-    if (isPlaying && !window.globalMusic.isPlaying) {
+    if (isPlaying && window.globalMusic.paused) {
         window.globalMusic.play().catch(error => console.log("Playback error: ", error));
         musicIcon.innerHTML = "⏸";
         window.globalMusic.isPlaying = true;
@@ -22,12 +23,10 @@ document.addEventListener("DOMContentLoaded", function () {
             window.globalMusic.play().catch(error => console.log("Playback error: ", error));
             musicIcon.innerHTML = "⏸";
             sessionStorage.setItem("isPlaying", "true");
-            window.globalMusic.isPlaying = true;
         } else {
             window.globalMusic.pause();
             musicIcon.innerHTML = "▶";
             sessionStorage.setItem("isPlaying", "false");
-            window.globalMusic.isPlaying = false;
         }
     });
 
@@ -37,8 +36,18 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             if (sessionStorage.getItem("musicPaused") === "false" && window.globalMusic.paused) {
                 window.globalMusic.play().catch(error => console.log("Playback error: ", error));
-                window.globalMusic.isPlaying = true;
             }
         }
+    });
+
+    // Menampilkan hidden text saat gambar diklik
+    const images = document.querySelectorAll(".image-container img");
+    images.forEach(img => {
+        img.addEventListener("click", function () {
+            let text = this.nextElementSibling;
+            if (text.classList.contains("hidden-text")) {
+                text.style.display = text.style.display === "block" ? "none" : "block";
+            }
+        });
     });
 });
