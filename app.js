@@ -44,9 +44,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const images = document.querySelectorAll(".image-container img");
     images.forEach(img => {
         img.addEventListener("click", function () {
-            let text = this.nextElementSibling;
-            if (text.classList.contains("hidden-text")) {
-                text.style.display = text.style.display === "block" ? "none" : "block";
+            let text = this.parentElement.querySelector(".hidden-text");
+            if (text) {
+                text.style.display = text.style.display === "none" ? "flex" : "none";
+                text.style.justifyContent = "center";
+                text.style.alignItems = "center";
             }
         });
     });
