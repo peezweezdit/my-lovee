@@ -14,29 +14,21 @@
             let musicBtn = document.getElementById("music-btn");
             let musicIcon = document.getElementById("music-icon");
             
-            if (!window.globalMusic) {
-                window.globalMusic = new Audio("music.mp3");
-                window.globalMusic.loop = true;
-                window.globalMusic.volume = 1.0;
-            }
+            let music = new Audio("music.mp3");
+            music.loop = true;
+            music.volume = 1.0;
             
-            let isPlaying = sessionStorage.getItem("isPlaying") === "true";
-            
-            if (isPlaying) {
-                window.globalMusic.play().catch(error => console.log("Playback error: ", error));
-                musicIcon.innerHTML = "⏸";
-            }
+            let isPlaying = false;
 
             musicBtn.addEventListener("click", function () {
-                if (window.globalMusic.paused) {
-                    window.globalMusic.play().catch(error => console.log("Playback error: ", error));
-                    musicIcon.innerHTML = "⏸";
-                    sessionStorage.setItem("isPlaying", "true");
-                } else {
-                    window.globalMusic.pause();
+                if (isPlaying) {
+                    music.pause();
                     musicIcon.innerHTML = "▶";
-                    sessionStorage.setItem("isPlaying", "false");
+                } else {
+                    music.play().catch(error => console.log("Playback error: ", error));
+                    musicIcon.innerHTML = "⏸";
                 }
+                isPlaying = !isPlaying;
             });
         });
     </script>
