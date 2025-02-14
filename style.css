@@ -66,15 +66,16 @@ h1 {
     box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.2);
 }
 
-.grid-gallery img {
+.grid-gallery img, 
+.grid-gallery video {
     width: 100%;
     height: auto;
     border-radius: 10px;
     cursor: pointer;
     transition: transform 0.3s;
 }
-
-.grid-gallery img:hover {
+.grid-gallery img:hover, 
+.grid-gallery video:hover {
     transform: scale(1.05);
 }
 
@@ -83,6 +84,12 @@ h1 {
     color: #ffe4e1;
     font-weight: bold;
     margin-top: 5px;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.image-container:hover .hidden-text {
+    display: block;
+    opacity: 1;
 }
 
 /* Tombol Musik & Home */
