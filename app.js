@@ -9,9 +9,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const musicBtn = document.getElementById("music-btn");
     const musicIcon = document.getElementById("music-icon");
-    
+
     let isPlaying = sessionStorage.getItem("isPlaying") === "true";
-    
+
     if (isPlaying && window.globalMusic.paused) {
         window.globalMusic.play().catch(error => console.log("Playback error: ", error));
         musicIcon.innerHTML = "⏸ ılılılllıılılıllllıılılllıllı";
@@ -63,16 +63,19 @@ document.addEventListener("DOMContentLoaded", function () {
         }, index * 500);
     });
 
-    // Menampilkan teks otomatis satu per satu dengan efek transisi
-    const hiddenTexts = document.querySelectorAll(".hidden-text");
-    hiddenTexts.forEach((text, index) => {
-        text.style.opacity = "0"; // Mulai transparan
-        text.style.transform = "translateY(20px)"; // Mulai sedikit turun
-        setTimeout(() => {
-            text.style.transition = "opacity 1s ease-in-out, transform 1s ease-in-out";
-            text.style.opacity = "1"; // Muncul dengan fade-in
-            text.style.transform = "translateY(0)"; // Geser ke posisi normal
-        }, index * 500); // Muncul satu per satu setiap 500ms
-    });
+    // Menampilkan teks otomatis saat halaman digulirkan
+    function revealTextOnScroll() {
+        const hiddenTexts = document.querySelectorAll(".hidden-text");
+        hiddenTexts.forEach((text) => {
+            const rect = text.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 100) { // Jika elemen mendekati viewport
+                text.style.transition = "opacity 1s ease-in-out, transform 1s ease-in-out";
+                text.style.opacity = "1"; // Muncul dengan fade-in
+                text.style.transform = "translateY(0)"; // Geser ke posisi normal
+            }
+        });
+    }
 
+    window.addEventListener("scroll", revealTextOnScroll);
+    revealTextOnScroll(); // Panggil fungsi sekali saat halaman dimuat
 });
