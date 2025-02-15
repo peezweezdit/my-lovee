@@ -63,15 +63,18 @@ document.addEventListener("DOMContentLoaded", function () {
         }, index * 500);
     });
 
-    // Menampilkan teks otomatis saat halaman digulirkan
+    // Menampilkan teks saat halaman digulir
     function revealTextOnScroll() {
         const hiddenTexts = document.querySelectorAll(".hidden-text");
-        hiddenTexts.forEach((text) => {
+        hiddenTexts.forEach((text, index) => {
             const rect = text.getBoundingClientRect();
-            if (rect.top < window.innerHeight - 100) { // Jika elemen mendekati viewport
-                text.style.transition = "opacity 1s ease-in-out, transform 1s ease-in-out";
-                text.style.opacity = "1"; // Muncul dengan fade-in
-                text.style.transform = "translateY(0)"; // Geser ke posisi normal
+            if (rect.top < window.innerHeight - 100 && !text.classList.contains("visible")) { 
+                setTimeout(() => {
+                    text.style.transition = "opacity 1s ease-in-out, transform 1s ease-in-out";
+                    text.style.opacity = "1"; // Muncul dengan fade-in
+                    text.style.transform = "translateY(0)"; // Geser ke posisi normal
+                    text.classList.add("visible"); // Hindari animasi berulang
+                }, index * 200); // Tambahkan delay untuk efek bertahap
             }
         });
     }
