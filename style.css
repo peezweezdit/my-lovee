@@ -13,8 +13,8 @@ body {
 }
 
 .love-button {
-    position: center;
-    bottom: 50px;
+    position: fixed; /* Agar tetap melayang */
+    bottom: 20px;
     background: #ff66b2;
     border: none;
     padding: 15px 20px;
@@ -25,16 +25,17 @@ body {
     box-shadow: 2px 2px 5px rgba(255, 20, 147, 0.5);
     transition: transform 0.3s ease-in-out;
     animation: heartbeat 1s infinite alternate;
+    z-index: 1000;
 }
 
 /* Tombol ke halaman selanjutnya */
 .next-button {
-    left: 30%;
+    right: 20px;
 }
 
 /* Tombol ke halaman sebelumnya */
 .prev-button {
-    left: 70%;
+    left: 20px;
 }
 
 /* Efek animasi */
@@ -90,11 +91,13 @@ body {
 }
 
 .hidden-text {
-    display: none;
+    opacity: 0; /* Awalnya tidak terlihat */
+    transform: translateY(20px); /* Awalnya turun sedikit */
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    display: block;
     color: #ffe4e1;
     font-weight: bold;
     margin-top: 5px;
-    transition: opacity 0.3s ease-in-out;
 }
 
 .image-container:hover .hidden-text {
